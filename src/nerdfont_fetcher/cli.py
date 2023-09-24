@@ -60,7 +60,6 @@ def ui():
         font_name = inquirer.text(
             message="Which font do you want to install?:",
             completer=font_completer,
-            multicolumn_complete=True,
             validate=font_validator,
         ).execute()
 
