@@ -6,7 +6,6 @@ import zipfile
 from pathlib import Path
 from typing import Optional, Callable
 
-import requests
 from rich.console import Console
 
 console = Console(
@@ -44,22 +43,6 @@ class FontManagementService:
         }
 
         self._install_path = install_path_matrix[platform.system()]
-
-    @classmethod
-    def get_font_zipfile_url(cls, font_name):
-        # TODO move to data_source
-        return f"https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/{font_name}.zip"
-
-    def download_zip(self) -> tempfile.NamedTemporaryFile:
-        url = self.get_font_zipfile_url(self.font_name)
-        response = requests.get(url)
-        response.raise_for_status()
-
-        tmp_file = tempfile.NamedTemporaryFile(mode="wb+")
-        tmp_file.write(response.content)
-        tmp_file.seek(0)
-
-        return tmp_file
 
     @staticmethod
     def make_needed_paths(path):
