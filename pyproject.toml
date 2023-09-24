@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "nerdfont-fetcher"
+version = "0.1.0"
+description = "A fetcher (and installer) of NerdFonts for the terminal"
+authors = ["Krissy Heishman <krissy@heishman.dev>"]
+license = "Krissy Heishmkrfsd."
+readme = "README.md"
+
+
+# designate the entry point for the CLI
+[tool.poetry.scripts]
+nerdfont = "nerdfont_fetcher.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+inquirerpy = "^0.3.4"
+rich = "^13.5.3"
+requests-cache = "^1.1.0"
+requests-mock = "^1.11.0"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+mock = "^5.1.0"
+pytest-mock = "^3.11.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
